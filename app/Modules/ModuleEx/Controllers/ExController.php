@@ -2,16 +2,18 @@
 namespace ModuleEx\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use ModuleEx\Repositories\ExRepository;
 
+class ExController extends BaseController {
 
-class ExController extends Controller {
+    private $exRepository;
 
-    public function __construct(){
-
+    public function __construct(ExRepository $exRepository){
+        $this->exRepository = $exRepository;
     }
 
-    public function index(Request $request){
-        return view('ModuleEx::index');
+    public function index(Request $request) {
+        $this->viewData['data'] = $this->exRepository->showIndex();
+        return parent::getView('index');
     }
 }

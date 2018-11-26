@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 class ExController extends Controller {
 
     public function __construct(){
-        
+
     }
 
     public function index(Request $request){
-        return '123';
+        return view('ModuleEx::index');
     }
 }
